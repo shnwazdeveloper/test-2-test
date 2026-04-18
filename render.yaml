@@ -1,0 +1,34 @@
+# render.yaml — Render.com deployment configuration
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: telegram-sticker-id-bot
+    runtime: node
+    region: oregon          # Change to: oregon | frankfurt | singapore | ohio
+    plan: free              # free | starter | standard | pro
+    branch: main
+
+    buildCommand: npm install
+    startCommand: npm start
+
+    # Health check — Render pings this to verify the service is alive
+    healthCheckPath: /health
+
+    # Auto-deploy when you push to the branch above
+    autoDeploy: true
+
+    envVars:
+      # ── Required ────────────────────────────────────────────────────
+      - key: BOT_TOKEN
+        sync: false          # Set manually in Render dashboard (secret)
+
+      - key: MONGODB_URI
+        sync: false          # Set manually in Render dashboard (secret)
+
+      # ── Auto-set by Render ──────────────────────────────────────────
+      - key: PORT
+        generateValue: false  # Render injects PORT automatically; do not override
+
+      - key: NODE_ENV
+        value: production

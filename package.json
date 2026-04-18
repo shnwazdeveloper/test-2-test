@@ -1,0 +1,33 @@
+{
+  "name": "telegram-sticker-id-bot",
+  "version": "1.0.0",
+  "description": "A Telegram bot that extracts File IDs and metadata from stickers, with MongoDB logging.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js",
+    "dev": "nodemon start.js",
+    "bot": "node index.js",
+    "server": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "sticker",
+    "file-id",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
